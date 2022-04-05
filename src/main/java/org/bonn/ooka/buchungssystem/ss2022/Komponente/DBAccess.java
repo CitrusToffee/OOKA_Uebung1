@@ -1,4 +1,4 @@
-package org.bonn.ooka.buchungssystem.ss2022;
+package org.bonn.ooka.buchungssystem.ss2022.Komponente;
 
 
 import java.sql.*;
@@ -48,7 +48,7 @@ public class DBAccess {
 
 	}
 	
-	public void openConnection(){
+	protected void openConnection(){
 		  try {
 			DriverManager.registerDriver( new org.postgresql.Driver() ); 
 		} catch (SQLException e) {
@@ -67,9 +67,9 @@ public class DBAccess {
 			e.printStackTrace();
 		}
 	}
-	
-	
-	public List<String> getObjects( int type, String value  ){
+
+
+	protected List<String> getObjects( int type, String value  ){
 		Statement st;
 		ResultSet rs;
 		List<String> result = new ArrayList();
@@ -91,8 +91,8 @@ public class DBAccess {
 		}
 		return result;
 	}
-	
-	public void closeConnection(){
+
+	protected void closeConnection(){
 		   try {
 			conn.close();
 		} catch (SQLException e) {
